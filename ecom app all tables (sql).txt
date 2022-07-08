@@ -1,0 +1,65 @@
+
+#products table
+--------------------------------------------------------------------------------------------------------------------------------------
+CREATE TABLE  "PRODUCTS_DTL" 
+   (	"ID" NUMBER, 
+	"PRODUCT_CODE" VARCHAR2(30), 
+	"PRODUCT_NAME" VARCHAR2(30), 
+	"IMAGE" BLOB, 
+	"PRICE" NUMBER(12,2)
+   )
+/
+
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+#USER_ACCOUNT
+
+CREATE TABLE  "USER_ACCOUNT" 
+   (	"USER_NAME" VARCHAR2(100), 
+	"PASSWORD" VARCHAR2(30) NOT NULL ENABLE, 
+	"USER_TYPE" VARCHAR2(10), 
+	"ACTIVE" VARCHAR2(1) NOT NULL ENABLE, 
+	"EMAIL" VARCHAR2(64) NOT NULL ENABLE, 
+	"SOURCE" VARCHAR2(64), 
+	 CONSTRAINT "USER_ACCOUNT_PK" PRIMARY KEY ("USER_NAME")
+  USING INDEX  ENABLE, 
+	 CONSTRAINT "USER_ACCOUNT_UK" UNIQUE ("EMAIL")
+  USING INDEX  ENABLE
+   )
+/
+------------------------------------------------------------------------------------------------------------------------------------
+
+#place orders table
+
+CREATE TABLE  "PLACE_ORDER" 
+   (	"PHONE_NUMBER" NUMBER(10,0) NOT NULL ENABLE, 
+	"ADDRESS" VARCHAR2(50) NOT NULL ENABLE, 
+	"PIN_CODE" NUMBER(7,0) NOT NULL ENABLE, 
+	"PAYMENT_METHOD" VARCHAR2(60) NOT NULL ENABLE, 
+	"IS_PROVIDED_DATA_IS_CORRECT?" VARCHAR2(20) NOT NULL ENABLE
+   )
+/
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE  "ORDER_PRODUCT1" 
+   (	"ID" NUMBER, 
+	"PRODUCT_CODE" VARCHAR2(300), 
+	"PRODUCT" VARCHAR2(300), 
+	"RATE" NUMBER, 
+	"QTY" NUMBER, 
+	"USER_NAME" VARCHAR2(20)
+   )
+/
+
+----------------------------------------------------------------------------------------------------------------------------
+
+CREATE TABLE  "FEEDBACK" 
+   (	"USER_NAME" VARCHAR2(30) NOT NULL ENABLE, 
+	"E-MAIL" VARCHAR2(30) NOT NULL ENABLE, 
+	"COMPLAINT" VARCHAR2(100), 
+	"APPRECIATION" VARCHAR2(100)
+   )
+/
